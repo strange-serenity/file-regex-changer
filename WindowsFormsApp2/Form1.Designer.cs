@@ -35,6 +35,7 @@
             this.labelFile = new System.Windows.Forms.Label();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.buttonSubmit = new System.Windows.Forms.Button();
+            this.buttonBrowseFolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxRegex
@@ -90,12 +91,23 @@
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
+            // buttonBrowseFolder
+            // 
+            this.buttonBrowseFolder.Location = new System.Drawing.Point(459, 37);
+            this.buttonBrowseFolder.Name = "buttonBrowseFolder";
+            this.buttonBrowseFolder.Size = new System.Drawing.Size(113, 23);
+            this.buttonBrowseFolder.TabIndex = 2;
+            this.buttonBrowseFolder.Text = "Browse folder";
+            this.buttonBrowseFolder.UseVisualStyleBackColor = true;
+            this.buttonBrowseFolder.Click += new System.EventHandler(this.buttonBrowseFolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 164);
+            this.ClientSize = new System.Drawing.Size(584, 164);
             this.Controls.Add(this.buttonSubmit);
+            this.Controls.Add(this.buttonBrowseFolder);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.labelFile);
             this.Controls.Add(this.labelRegex);
@@ -106,6 +118,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonBrowseFolder;
 
         private System.Windows.Forms.Button buttonSubmit;
 
