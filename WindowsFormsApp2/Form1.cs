@@ -14,22 +14,60 @@ namespace WindowsFormsApp2
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
-        {            
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             DialogResult result = openFileDialog.ShowDialog();
             // if a file is selected
             if (result == DialogResult.OK)
             {
                 // set the path of the selected file to the text field
-                this.textBoxFileURL.Text = openFileDialog.FileName;
+                textBoxFileURL.Text = openFileDialog.FileName;
+            }
+
+            textBoxFolderURL.Enabled = false;
+            buttonBrowseFolder.Enabled = false;
+        }
+
+        private void buttonBrowseFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            // if a folder is selected
+            if (result == DialogResult.OK)
+            {
+                // set the path of the selected folder to the text field
+                textBoxFolderURL.Text = folderBrowserDialog.SelectedPath;
+            }
+
+            textBoxFileURL.Enabled = false;
+            buttonBrowse.Enabled = false;
+        }
+
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            string regexPattern = textBox1.Text;
+
+            if ((!string.IsNullOrEmpty(textBoxFileURL.Text) && !string.IsNullOrEmpty(textBoxFolderURL.Text))
+                || (string.IsNullOrEmpty(textBoxFileURL.Text) && string.IsNullOrEmpty(textBoxFolderURL.Text)))
+            {
+                MessageBox.Show("Please select only one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // If file path is not empty, process single file
+            if (!string.IsNullOrEmpty(textBoxFileURL.Text))
+            {
+                ProcessFile(textBoxFileURL.Text, regexPattern);
+            }
+            // If folder path is not empty, process all files in the folder recursively
+            else
+            {
+                ProcessFolder(textBoxFolderURL.Text, regexPattern);
             }
         }
-        
-        private void buttonSubmit_Click(object sender, EventArgs e)
-        {            
-            // Get the file path
-            string filePath = textBoxFileURL.Text;
-            
+
+        private void ProcessFile(string filePath, string regexPattern)
+        {
             // Check if the file exists
             if (File.Exists(filePath))
             {
@@ -41,26 +79,25 @@ namespace WindowsFormsApp2
                     {
                         fileContent = sr.ReadToEnd();
                     }
-                    
-                    Console.WriteLine(fileContent);
-                    
-                    // Get the regular expression from textBoxRegex
-                    string regexPattern = textBoxRegex.Text;
-                    
+
                     // Apply the regular expression to the file content to remove matching lines
-                    string updatedContent = Regex.Replace(fileContent, regexPattern, "", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-                    
+                    string updatedContent = Regex.Replace(fileContent, regexPattern, "",
+                        RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
                     // Rewrite the file with the updated content using UTF-8 encoding
                     using (StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8))
                     {
                         sw.Write(updatedContent);
                     }
-                    
-                    MessageBox.Show("Successfully removed matching lines based on the regular expression and rewritten the file.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    MessageBox.Show(
+                        "Successfully removed matching lines based on the regular expression and rewritten the file.",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             else
@@ -69,9 +106,18 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void buttonBrowseFolder_Click(object sender, EventArgs e)
+        private void ProcessFolder(string folderPath, string regexPattern)
         {
-            throw new System.NotImplementedException();
+            // Process all files in the folder recursively
+            string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                Console.WriteLine(file + ", " + regexPattern);
+                ProcessFile(file, regexPattern);
+            }
+
+            MessageBox.Show("Successfully processed all files in the folder.", "Success", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }
