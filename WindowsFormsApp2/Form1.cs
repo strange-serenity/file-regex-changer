@@ -77,7 +77,7 @@ namespace WindowsFormsApp2
                     string fileContent;
                     using (StreamReader sr = new StreamReader(filePath, Encoding.Default))
                     {
-                        fileContent = sr.ReadToEnd();
+                        fileContent = sr.ReadToEnd(); // проблемное место
                     }
 
                     // Apply the regular expression to the file content to remove matching lines
@@ -108,16 +108,20 @@ namespace WindowsFormsApp2
 
         private void ProcessFolder(string folderPath, string regexPattern)
         {
+            // Escape special characters in the regex pattern
+            string escapedPattern = Regex.Escape(regexPattern);
+    
             // Process all files in the folder recursively
             string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
-                Console.WriteLine(file + ", " + regexPattern);
-                ProcessFile(file, regexPattern);
+                Console.WriteLine(file + ", " + escapedPattern);
+                ProcessFile(file, escapedPattern);
             }
 
             MessageBox.Show("Successfully processed all files in the folder.", "Success", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
     }
 }
