@@ -46,6 +46,7 @@
             this.textBoxFolder.Name = "textBoxFolder";
             this.textBoxFolder.Size = new System.Drawing.Size(268, 20);
             this.textBoxFolder.TabIndex = 0;
+            this.textBoxFolder.TextChanged += new System.EventHandler(this.textBoxFolder_TextChanged);
             // 
             // labelFolder
             // 
@@ -61,6 +62,7 @@
             this.textBoxFile.Name = "textBoxFile";
             this.textBoxFile.Size = new System.Drawing.Size(268, 20);
             this.textBoxFile.TabIndex = 0;
+            this.textBoxFile.TextChanged += new System.EventHandler(this.textBoxFile_TextChanged);
             // 
             // labelFile
             // 
@@ -96,6 +98,7 @@
             this.textBoxRegex.Name = "textBoxRegex";
             this.textBoxRegex.Size = new System.Drawing.Size(268, 20);
             this.textBoxRegex.TabIndex = 0;
+            this.textBoxRegex.TextChanged += new System.EventHandler(this.textBoxRegex_TextChanged);
             // 
             // label1
             // 
@@ -107,6 +110,7 @@
             // 
             // buttonSubmit
             // 
+            this.buttonSubmit.Enabled = false;
             this.buttonSubmit.Location = new System.Drawing.Point(356, 106);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(113, 23);

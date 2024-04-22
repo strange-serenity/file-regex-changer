@@ -123,5 +123,46 @@ namespace WindowsFormsApp2
                 MessageBoxIcon.Information);
         }
 
+        private void textBoxFile_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxFile.Text))
+            {
+                textBoxFolder.Text = "";
+                textBoxFolder.Enabled = false;
+                buttonBrowseFolder.Enabled = false;
+            } else
+            {
+                textBoxFolder.Enabled = true;
+                buttonBrowseFolder.Enabled = true;
+            }
+
+        }
+
+        private void textBoxFolder_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxFolder.Text))
+            {
+                textBoxFile.Text = "";
+                textBoxFile.Enabled = false;
+                buttonBrowseFile.Enabled = false;
+            }
+            else
+            {
+                textBoxFile.Enabled = true;
+                buttonBrowseFile.Enabled = true;
+            }
+        }
+
+        private void textBoxRegex_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxRegex.Text))
+            {
+                buttonSubmit.Enabled = true;
+            }
+            else
+            {
+                buttonSubmit.Enabled = false;
+            }
+        }
     }
 }
