@@ -57,7 +57,7 @@ namespace WindowsFormsApp2
             // If file path is not empty, process single file
             if (!string.IsNullOrEmpty(textBoxFile.Text))
             {
-                ProcessFile(textBoxFile.Text, regexPattern);
+                ProcessFile(textBoxFile.Text, regexPattern, false);
             }
             // If folder path is not empty, process all files in the folder recursively
             else
@@ -66,7 +66,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void ProcessFile(string filePath, string regexPattern)
+        private void ProcessFile(string filePath, string regexPattern, bool isFolder)
         {
             // Check if the file exists
             if (File.Exists(filePath))
@@ -90,9 +90,12 @@ namespace WindowsFormsApp2
                         sw.Write(updatedContent);
                     }
 
-                    MessageBox.Show(
-                        "Successfully removed matching lines based on the regular expression and rewritten the file.",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (isFolder == false)
+                    {
+                        MessageBox.Show("Successfully removed matching lines based on the regular expression and rewritten the file.",
+                            "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +118,7 @@ namespace WindowsFormsApp2
             string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
-                ProcessFile(file, escapedPattern);
+                ProcessFile(file, escapedPattern, true);
             }
 
             MessageBox.Show("Successfully processed all files in the folder.", "Success", MessageBoxButtons.OK,
