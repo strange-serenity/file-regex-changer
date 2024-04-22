@@ -115,7 +115,6 @@ namespace WindowsFormsApp2
             string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
             foreach (string file in files)
             {
-                Console.WriteLine(file + ", " + escapedPattern);
                 ProcessFile(file, escapedPattern);
             }
 
