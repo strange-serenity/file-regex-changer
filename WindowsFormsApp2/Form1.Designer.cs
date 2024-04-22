@@ -29,23 +29,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxFolderURL = new System.Windows.Forms.TextBox();
+            this.textBoxFolder = new System.Windows.Forms.TextBox();
             this.labelFolder = new System.Windows.Forms.Label();
-            this.textBoxFileURL = new System.Windows.Forms.TextBox();
+            this.textBoxFile = new System.Windows.Forms.TextBox();
             this.labelFile = new System.Windows.Forms.Label();
-            this.buttonBrowse = new System.Windows.Forms.Button();
+            this.buttonBrowseFile = new System.Windows.Forms.Button();
             this.buttonBrowseFolder = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxRegex = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSubmit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBoxFolderURL
+            // textBoxFolder
             // 
-            this.textBoxFolderURL.Location = new System.Drawing.Point(62, 61);
-            this.textBoxFolderURL.Name = "textBoxFolderURL";
-            this.textBoxFolderURL.Size = new System.Drawing.Size(268, 20);
-            this.textBoxFolderURL.TabIndex = 0;
+            this.textBoxFolder.Location = new System.Drawing.Point(62, 61);
+            this.textBoxFolder.Name = "textBoxFolder";
+            this.textBoxFolder.Size = new System.Drawing.Size(268, 20);
+            this.textBoxFolder.TabIndex = 0;
             // 
             // labelFolder
             // 
@@ -55,12 +55,12 @@
             this.labelFolder.TabIndex = 1;
             this.labelFolder.Text = "Folder:";
             // 
-            // textBoxFileURL
+            // textBoxFile
             // 
-            this.textBoxFileURL.Location = new System.Drawing.Point(62, 14);
-            this.textBoxFileURL.Name = "textBoxFileURL";
-            this.textBoxFileURL.Size = new System.Drawing.Size(268, 20);
-            this.textBoxFileURL.TabIndex = 0;
+            this.textBoxFile.Location = new System.Drawing.Point(62, 14);
+            this.textBoxFile.Name = "textBoxFile";
+            this.textBoxFile.Size = new System.Drawing.Size(268, 20);
+            this.textBoxFile.TabIndex = 0;
             // 
             // labelFile
             // 
@@ -70,15 +70,15 @@
             this.labelFile.TabIndex = 1;
             this.labelFile.Text = "File:";
             // 
-            // buttonBrowse
+            // buttonBrowseFile
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(356, 12);
-            this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(113, 23);
-            this.buttonBrowse.TabIndex = 2;
-            this.buttonBrowse.Text = "Browse file";
-            this.buttonBrowse.UseVisualStyleBackColor = true;
-            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
+            this.buttonBrowseFile.Location = new System.Drawing.Point(356, 12);
+            this.buttonBrowseFile.Name = "buttonBrowseFile";
+            this.buttonBrowseFile.Size = new System.Drawing.Size(113, 23);
+            this.buttonBrowseFile.TabIndex = 2;
+            this.buttonBrowseFile.Text = "Browse file";
+            this.buttonBrowseFile.UseVisualStyleBackColor = true;
+            this.buttonBrowseFile.Click += new System.EventHandler(this.buttonBrowseFile_Click);
             // 
             // buttonBrowseFolder
             // 
@@ -90,12 +90,12 @@
             this.buttonBrowseFolder.UseVisualStyleBackColor = true;
             this.buttonBrowseFolder.Click += new System.EventHandler(this.buttonBrowseFolder_Click);
             // 
-            // textBox1
+            // textBoxRegex
             // 
-            this.textBox1.Location = new System.Drawing.Point(62, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(268, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxRegex.Location = new System.Drawing.Point(62, 108);
+            this.textBoxRegex.Name = "textBoxRegex";
+            this.textBoxRegex.Size = new System.Drawing.Size(268, 20);
+            this.textBoxRegex.TabIndex = 0;
             // 
             // label1
             // 
@@ -105,48 +105,48 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Regex:";
             // 
-            // button1
+            // buttonSubmit
             // 
-            this.button1.Location = new System.Drawing.Point(356, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonSubmit_Click);
+            this.buttonSubmit.Location = new System.Drawing.Point(356, 106);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(113, 23);
+            this.buttonSubmit.TabIndex = 2;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 143);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.buttonBrowseFolder);
-            this.Controls.Add(this.buttonBrowse);
+            this.Controls.Add(this.buttonBrowseFile);
             this.Controls.Add(this.labelFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelFolder);
-            this.Controls.Add(this.textBoxFileURL);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBoxFolderURL);
+            this.Controls.Add(this.textBoxFile);
+            this.Controls.Add(this.textBoxRegex);
+            this.Controls.Add(this.textBoxFolder);
             this.Name = "Form1";
             this.Text = "Удаление содержимого по Regex";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxRegex;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSubmit;
 
         private System.Windows.Forms.Button buttonBrowseFolder;
 
         private System.Windows.Forms.Label labelFolder;
-        private System.Windows.Forms.TextBox textBoxFileURL;
+        private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Label labelFile;
-        private System.Windows.Forms.Button buttonBrowse;
+        private System.Windows.Forms.Button buttonBrowseFile;
 
-        private System.Windows.Forms.TextBox textBoxFolderURL;
+        private System.Windows.Forms.TextBox textBoxFolder;
 
         #endregion
     }

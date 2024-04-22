@@ -13,7 +13,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
-        private void buttonBrowse_Click(object sender, EventArgs e)
+        private void buttonBrowseFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             DialogResult result = openFileDialog.ShowDialog();
@@ -21,10 +21,10 @@ namespace WindowsFormsApp2
             if (result == DialogResult.OK)
             {
                 // set the path of the selected file to the text field
-                textBoxFileURL.Text = openFileDialog.FileName;
+                textBoxFile.Text = openFileDialog.FileName;
             }
 
-            textBoxFolderURL.Enabled = false;
+            textBoxFolder.Enabled = false;
             buttonBrowseFolder.Enabled = false;
         }
 
@@ -36,33 +36,33 @@ namespace WindowsFormsApp2
             if (result == DialogResult.OK)
             {
                 // set the path of the selected folder to the text field
-                textBoxFolderURL.Text = folderBrowserDialog.SelectedPath;
+                textBoxFolder.Text = folderBrowserDialog.SelectedPath;
             }
 
-            textBoxFileURL.Enabled = false;
-            buttonBrowse.Enabled = false;
+            textBoxFile.Enabled = false;
+            buttonBrowseFile.Enabled = false;
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            string regexPattern = textBox1.Text;
+            string regexPattern = textBoxRegex.Text;
 
-            if ((!string.IsNullOrEmpty(textBoxFileURL.Text) && !string.IsNullOrEmpty(textBoxFolderURL.Text))
-                || (string.IsNullOrEmpty(textBoxFileURL.Text) && string.IsNullOrEmpty(textBoxFolderURL.Text)))
+            if ((!string.IsNullOrEmpty(textBoxFile.Text) && !string.IsNullOrEmpty(textBoxFolder.Text))
+                || (string.IsNullOrEmpty(textBoxFile.Text) && string.IsNullOrEmpty(textBoxFolder.Text)))
             {
                 MessageBox.Show("Please select only one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // If file path is not empty, process single file
-            if (!string.IsNullOrEmpty(textBoxFileURL.Text))
+            if (!string.IsNullOrEmpty(textBoxFile.Text))
             {
-                ProcessFile(textBoxFileURL.Text, regexPattern);
+                ProcessFile(textBoxFile.Text, regexPattern);
             }
             // If folder path is not empty, process all files in the folder recursively
             else
             {
-                ProcessFolder(textBoxFolderURL.Text, regexPattern);
+                ProcessFolder(textBoxFolder.Text, regexPattern);
             }
         }
 
