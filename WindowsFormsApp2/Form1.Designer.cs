@@ -95,6 +95,7 @@
             // textBoxRegex
             // 
             this.textBoxRegex.Location = new System.Drawing.Point(62, 108);
+            this.textBoxRegex.Multiline = true;
             this.textBoxRegex.Name = "textBoxRegex";
             this.textBoxRegex.Size = new System.Drawing.Size(268, 20);
             this.textBoxRegex.TabIndex = 0;

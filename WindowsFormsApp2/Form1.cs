@@ -81,8 +81,8 @@ namespace WindowsFormsApp2
                     }
 
                     // Apply the regular expression to the file content to remove matching lines
-                    string updatedContent = Regex.Replace(fileContent, regexPattern, "",
-                        RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                    string updatedContent = Regex.Replace(fileContent, regexPattern, "", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
 
                     // Rewrite the file with the updated content using UTF-8 encoding
                     using (StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8))
