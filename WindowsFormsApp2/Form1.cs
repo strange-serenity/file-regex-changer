@@ -45,7 +45,7 @@ namespace WindowsFormsApp2
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            string regexPattern = textBoxRegex.Text;
+            string regexPattern = @"<div\s+id=""blocking_overlay""\s+style=""display:\s+none;"">\s*</div>";
 
             if ((!string.IsNullOrEmpty(textBoxFile.Text) && !string.IsNullOrEmpty(textBoxFolder.Text))
                 || (string.IsNullOrEmpty(textBoxFile.Text) && string.IsNullOrEmpty(textBoxFolder.Text)))
@@ -71,6 +71,13 @@ namespace WindowsFormsApp2
             // Check if the file exists
             if (File.Exists(filePath))
             {
+                // Check if the file extension is either ".html" or ".js"
+                string extension = Path.GetExtension(filePath);
+                if (extension == ".db")
+                {
+                   return;
+                }
+
                 try
                 {
                     // Read the file content with UTF-8 encoding
@@ -92,10 +99,10 @@ namespace WindowsFormsApp2
 
                     if (isFolder == false)
                     {
-                        MessageBox.Show("Successfully removed matching lines based on the regular expression and rewritten the file.",
+                        MessageBox.Show(@"Successfully removed matching lines based on the regular expression and rewritten the file.",
                             "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -108,6 +115,7 @@ namespace WindowsFormsApp2
                 MessageBox.Show("File does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void ProcessFolder(string folderPath, string regexPattern)
         {
@@ -159,11 +167,11 @@ namespace WindowsFormsApp2
         {
             if (!string.IsNullOrEmpty(textBoxRegex.Text))
             {
-                buttonSubmit.Enabled = true;
+                removeOverlay.Enabled = true;
             }
             else
             {
-                buttonSubmit.Enabled = false;
+                removeOverlay.Enabled = false;
             }
         }
     }

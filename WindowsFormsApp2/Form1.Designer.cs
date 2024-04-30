@@ -35,9 +35,7 @@
             this.labelFile = new System.Windows.Forms.Label();
             this.buttonBrowseFile = new System.Windows.Forms.Button();
             this.buttonBrowseFolder = new System.Windows.Forms.Button();
-            this.textBoxRegex = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.removeOverlay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxFolder
@@ -92,47 +90,28 @@
             this.buttonBrowseFolder.UseVisualStyleBackColor = true;
             this.buttonBrowseFolder.Click += new System.EventHandler(this.buttonBrowseFolder_Click);
             // 
-            // textBoxRegex
+            // removeOverlay
             // 
-            this.textBoxRegex.Location = new System.Drawing.Point(62, 108);
-            this.textBoxRegex.Multiline = true;
-            this.textBoxRegex.Name = "textBoxRegex";
-            this.textBoxRegex.Size = new System.Drawing.Size(268, 20);
-            this.textBoxRegex.TabIndex = 0;
-            this.textBoxRegex.TextChanged += new System.EventHandler(this.textBoxRegex_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(11, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Regex:";
-            // 
-            // buttonSubmit
-            // 
-            this.buttonSubmit.Enabled = false;
-            this.buttonSubmit.Location = new System.Drawing.Point(356, 106);
-            this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(113, 23);
-            this.buttonSubmit.TabIndex = 2;
-            this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
-            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            this.removeOverlay.Enabled = false;
+            this.removeOverlay.Location = new System.Drawing.Point(12, 108);
+            this.removeOverlay.Name = "removeOverlay";
+            this.removeOverlay.Size = new System.Drawing.Size(113, 23);
+            this.removeOverlay.TabIndex = 2;
+            this.removeOverlay.Text = "Remove overlay div";
+            this.removeOverlay.UseVisualStyleBackColor = true;
+            this.removeOverlay.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 143);
-            this.Controls.Add(this.buttonSubmit);
+            this.Controls.Add(this.removeOverlay);
             this.Controls.Add(this.buttonBrowseFolder);
             this.Controls.Add(this.buttonBrowseFile);
             this.Controls.Add(this.labelFile);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelFolder);
             this.Controls.Add(this.textBoxFile);
-            this.Controls.Add(this.textBoxRegex);
             this.Controls.Add(this.textBoxFolder);
             this.Name = "Form1";
             this.Text = "Удаление содержимого по Regex";
@@ -140,9 +119,7 @@
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.TextBox textBoxRegex;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Button removeOverlay;
 
         private System.Windows.Forms.Button buttonBrowseFolder;
 
